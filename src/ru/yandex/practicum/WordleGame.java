@@ -191,8 +191,8 @@ public class WordleGame {
         }
 
         // 3. Пытаемся выбрать случайную подсказку из отфильтрованных кандидатов
-        String hint;
-        {
+        String hint = null;
+        if (!candidates.isEmpty()) {
             int idx = (int) (Math.random() * candidates.size());
             hint = candidates.get(idx);
         }
