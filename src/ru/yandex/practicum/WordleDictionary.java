@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import static ru.yandex.practicum.GameConfig.WORD_LENGTH;
 
 public class WordleDictionary {
 
@@ -29,7 +30,7 @@ public class WordleDictionary {
         answer = TextUtils.normalize(answer);
 
 
-        if (guess.length() != answer.length()) {
+        if (guess.length() != WORD_LENGTH || answer.length() != WORD_LENGTH) {
             throw new IllegalArgumentException("Слова должны быть одинаковой длины");
         }
 

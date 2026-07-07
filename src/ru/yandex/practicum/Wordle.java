@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import static ru.yandex.practicum.GameConfig.MAX_STEPS;
 
 public class Wordle {
 
@@ -31,7 +32,7 @@ public class Wordle {
             String answer = dictionary.getRandomWord();
             logger.log("Загадано слово: " + answer);
 
-            int maxSteps = 6;
+            int maxSteps = MAX_STEPS;
             WordleGame game = new WordleGame(answer, dictionary, maxSteps, logger);
             logger.log("Игра создана. Максимум попыток: " + maxSteps);
 
@@ -101,7 +102,7 @@ public class Wordle {
         System.out.println("- '+' = буква есть и на своём месте");
         System.out.println("- '^' = буква есть, но не там");
         System.out.println("- '-' = такой буквы нет");
-        System.out.println("- У Вас шесть попыток\n");
+        System.out.println("- У Вас " + MAX_STEPS + " попыток\n");
     }
 
     private static void printResult(char[] result) {

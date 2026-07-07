@@ -9,10 +9,12 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import static ru.yandex.practicum.GameConfig.WORD_LENGTH;
 
 public class WordleDictionaryLoader {
 
     private final LoggerService logger;
+
 
     public WordleDictionaryLoader(LoggerService logger) {
         this.logger = logger;
@@ -47,7 +49,7 @@ public class WordleDictionaryLoader {
                 word = TextUtils.normalize(word);
 
                 // Проверяем уже нормализованное слово
-                if (word.length() != 5) {
+                if (word.length() != WORD_LENGTH) {
                     skippedLength++;
                     continue;
                 }
@@ -112,7 +114,7 @@ public class WordleDictionaryLoader {
             String normalized = TextUtils.normalize(word.trim());
 
             // Проверяем длину уже после нормализации (на случай, если trim что‑то изменил)
-            if (normalized.length() == 5 && normalized.matches("[а-я]+")) {
+            if (normalized.length() == WORD_LENGTH && normalized.matches("[а-яё]+")) {
                 fallbackWords.add(normalized);
             } else {
                 logger.log("Слово исключено из fallback по длине или символам: '" + word + "' -> '" + normalized + "'");

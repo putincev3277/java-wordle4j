@@ -3,6 +3,7 @@ package ru.yandex.practicum;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
+import static ru.yandex.practicum.GameConfig.MAX_STEPS;
 
 class WordleTest {
 
@@ -16,7 +17,7 @@ class WordleTest {
             var loader = new WordleDictionaryLoader(logger);
             WordleDictionary dictionary = loader.createFallbackDictionary(logger);
             String answer = dictionary.getRandomWord();
-            WordleGame game = new WordleGame(answer, dictionary, 6, logger);
+            WordleGame game = new WordleGame(answer, dictionary, MAX_STEPS, logger);
 
             // Сделаем один ход
             char[] result = game.makeMove(answer);

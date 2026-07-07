@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
+import static ru.yandex.practicum.GameConfig.MAX_STEPS;
 
 class WordleGameTest {
 
@@ -17,7 +18,7 @@ class WordleGameTest {
         logger = new LoggerService(System.out);
         List<String> words = List.of("арбуз", "банан", "груша", "дыня", "киви");
         dictionary = new WordleDictionary(words);
-        game = new WordleGame("арбуз", dictionary, 6, logger);
+        game = new WordleGame("арбуз", dictionary, MAX_STEPS, logger);
     }
 
     @Test

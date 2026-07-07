@@ -3,11 +3,14 @@ package ru.yandex.practicum;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static ru.yandex.practicum.GameConfig.WORD_LENGTH;
+
 public class WordleGame {
     private final String answer;
     private final WordleDictionary dictionary;
     private final int maxSteps;
     private final LoggerService logger;
+
 
     // История ходов: порядок важен, нужна индексация — ArrayList оптимален
     private final List<Move> history = new ArrayList<>();
@@ -106,8 +109,9 @@ public class WordleGame {
         }
 
         String guess = TextUtils.normalize(input);
-        if (guess.length() != 5) {
-            throw new GameException("Слово должно быть длиной ровно 5 букв.");
+
+        if (guess.length() != WORD_LENGTH) {
+            throw new GameException("Слово должно быть длиной ровно " + WORD_LENGTH + " букв.");
         }
 
         if (triedWordsSet.contains(guess)) {
